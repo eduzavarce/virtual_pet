@@ -1,1 +1,4 @@
 rootProject.name = 'virtual_pet'
+
+include ':configuration'
+project(':configuration').projectDir = new File('services/configuration')
