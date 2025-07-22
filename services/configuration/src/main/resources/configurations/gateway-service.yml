@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: "auth-service"
+              uri: lb://auth-service
+              predicates:
+                - Path=/auth/**
+              filters:
+                - PrefixPath=/api/v1
+server:
+  port: ${GATEWAY_SERVER_PORT:8080}
+eureka:
+  instance:
+    hostname: ${DISCOVERY_SERVER_HOSTNAME:localhost}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${DISCOVERY_SERVER_DOMAIN:http://localhost}:${DISCOVERY_SERVER_PORT:8761}/eureka/
