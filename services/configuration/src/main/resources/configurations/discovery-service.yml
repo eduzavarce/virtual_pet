@@ -1,0 +1,11 @@
+eureka:
+  instance:
+    hostname: ${DISCOVERY_SERVER_HOSTNAME:localhost}
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: ${DISCOVERY_SERVER_DOMAIN:http://localhost}:${server.port:8087}/eureka/
+server:
+  port: ${DISCOVERY_SERVER_PORT}
+

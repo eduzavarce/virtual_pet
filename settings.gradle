@@ -2,3 +2,6 @@ rootProject.name = 'virtual_pet'
 
 include ':configuration'
 project(':configuration').projectDir = new File('services/configuration')
+
+include ':discovery'
+project(':discovery').projectDir = new File('services/discovery')
