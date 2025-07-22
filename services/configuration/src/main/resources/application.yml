@@ -12,3 +12,12 @@ server:
   port: ${CONFIGURATION_SERVER_PORT:8888}
 
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
