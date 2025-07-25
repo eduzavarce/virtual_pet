@@ -779,8 +779,12 @@
    **So that** common security vulnerabilities are prevented.
 
 - [ ] **As a** developer,  
-   **I want to** implement comprehensive authentication and authorization testing,  
+   **I want to** implement comprehensive Keycloak authentication and authorization testing,  
    **So that** access control mechanisms work correctly.
+
+- [ ] **As a** developer,  
+   **I want to** implement User Service security testing,  
+   **So that** user profile management is secure and properly protected.
 
 - [ ] **As a** developer,  
    **I want to** implement data encryption auditing,  
