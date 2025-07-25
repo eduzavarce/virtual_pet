@@ -4,10 +4,10 @@ spring:
       server:
         webmvc:
           routes:
-            - id: "auth-service"
-              uri: lb://auth-service
+            - id: "users-service"
+              uri: lb://users-service
               predicates:
-                - Path=/auth/**
+                - Path=/users/**
               filters:
                 - PrefixPath=/api/v1
 server:
