@@ -14,10 +14,14 @@ We will implement a comprehensive microservices architecture for the Virtual Pet
 
 ### 3. Business Domain Microservices
 
-- **Authentication Service**: Handles user registration, authentication, and authorization with:
-    - Local authentication using JWT
-    - OAuth2 integration for social login options
+- **Keycloak Integration**: External identity and access management solution that handles:
+    - User authentication and authorization
+    - OAuth2/OpenID Connect integration for social login options
     - Role-based access control implementation
+- **User Service**: Handles user-related business logic:
+    - User profile management
+    - User preferences and settings
+    - User data management and validation
 - **Pet Service**: Core service managing:
     - Pet creation, customization, and management
     - Pet status updates and interactions

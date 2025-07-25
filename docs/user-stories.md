@@ -162,67 +162,89 @@
 
 ## Phase 2: Authentication and Pet Services Implementation
 
-### Authentication Service
+### Keycloak Integration
 
 - [ ] **As a** developer,  
-   **I want to** implement a secure user registration system,  
-   **So that** new users can create accounts with proper validation and password encryption.
+   **I want to** set up and configure Keycloak for the Virtual Pet application,  
+   **So that** we have a robust external identity and access management solution.
 
 - [ ] **As a** developer,  
-   **I want to** implement JWT-based authentication,  
-   **So that** users can securely log in and maintain their session across the application.
+   **I want to** configure Keycloak realms, clients, and security settings,  
+   **So that** the authentication environment is properly secured.
 
 - [ ] **As a** developer,  
-   **I want to** implement token refresh mechanisms,  
-   **So that** users can maintain their session without frequent re-authentication.
+   **I want to** configure user registration and login flows in Keycloak,  
+   **So that** users can securely create accounts and authenticate.
 
 - [ ] **As a** developer,  
-   **I want to** integrate OAuth2 authentication with popular social platforms (Google, Facebook),  
+   **I want to** configure OAuth2/OpenID Connect for social login integration in Keycloak,  
    **So that** users can log in using their existing social accounts.
 
 - [ ] **As a** developer,  
-   **I want to** implement role-based access control (RBAC),  
-   **So that** different user types (regular users, admins) have appropriate permissions.
+   **I want to** set up role-based access control in Keycloak,  
+   **So that** different user types have appropriate permissions.
 
 - [ ] **As a** developer,  
-   **I want to** implement secure password reset functionality,  
+   **I want to** configure password policies and recovery mechanisms in Keycloak,  
    **So that** users can recover their accounts if they forget their passwords.
 
 - [ ] **As a** developer,  
-   **I want to** publish user registration events to Kafka,  
-   **So that** other services can react to new user creation.
+   **I want to** integrate the API Gateway with Keycloak,  
+   **So that** token validation and authorization are handled at the gateway level.
 
 - [ ] **As a** developer,  
-   **I want to** publish user authentication events to Kafka,  
-   **So that** login activities can be monitored and analyzed.
-
-- [ ] **As a** developer,  
-   **I want to** publish role change events to Kafka,  
-   **So that** other services can update their access control accordingly.
-
-- [ ] **As a** developer,  
-    **I want to** consume relevant events from other services,  
-    **So that** the Authentication Service can react to system-wide changes.
+   **I want to** configure event listeners in Keycloak to publish authentication events,  
+   **So that** other services can react to authentication-related activities.
 
 - [ ] **As a** user,  
-    **I want to** register for a new account,  
+    **I want to** register for a new account through Keycloak,  
     **So that** I can access the virtual pet application.
 
 - [ ] **As a** user,  
-    **I want to** log in using my username and password,  
+    **I want to** log in using my username and password through Keycloak,  
     **So that** I can access my virtual pets.
 
 - [ ] **As a** user,  
-    **I want to** log in using my social media accounts,  
+    **I want to** log in using my social media accounts through Keycloak,  
     **So that** I don't need to remember another set of credentials.
 
 - [ ] **As a** user,  
-    **I want to** reset my password if I forget it,  
+    **I want to** reset my password through Keycloak if I forget it,  
     **So that** I can regain access to my account.
 
 - [ ] **As an** administrator,  
-    **I want to** manage user accounts and permissions,  
+    **I want to** manage user accounts and permissions through Keycloak's admin console,  
     **So that** I can ensure proper access control across the application.
+
+### User Service
+
+- [ ] **As a** developer,  
+   **I want to** implement the User Service for managing user profiles and preferences,  
+   **So that** user-related business logic is handled separately from authentication.
+
+- [ ] **As a** developer,  
+   **I want to** implement user profile management functionality,  
+   **So that** users can update their personal information and preferences.
+
+- [ ] **As a** developer,  
+   **I want to** implement user preferences and settings management,  
+   **So that** users can customize their application experience.
+
+- [ ] **As a** developer,  
+   **I want to** configure event consumption from Keycloak for user-related events,  
+   **So that** the User Service stays in sync with authentication events.
+
+- [ ] **As a** developer,  
+   **I want to** configure event publishing for user profile and preference changes,  
+   **So that** other services can react to user data updates.
+
+- [ ] **As a** user,  
+    **I want to** manage my profile information through the User Service,  
+    **So that** I can keep my personal details up to date.
+
+- [ ] **As a** user,  
+    **I want to** configure my preferences and settings through the User Service,  
+    **So that** I can personalize my application experience.
 
 ### Pet Service
 
@@ -271,8 +293,12 @@
     **So that** other services can react to pet evolution and milestones.
 
 - [ ] **As a** developer,  
-    **I want to** consume user events from the Authentication Service,  
-    **So that** pet ownership can be properly managed when user accounts change.
+    **I want to** consume user authentication events from Keycloak,  
+    **So that** pet ownership can be properly managed when authentication status changes.
+
+- [ ] **As a** developer,  
+    **I want to** consume user profile events from the User Service,  
+    **So that** pet ownership can be properly managed when user profiles change.
 
 - [ ] **As a** user,  
     **I want to** create a new virtual pet,  
@@ -343,8 +369,12 @@
    **So that** other services can react to subscription changes.
 
 - [ ] **As a** developer,  
-    **I want to** consume user events from the Authentication Service,  
-    **So that** payment accounts can be properly associated with user accounts.
+    **I want to** consume user authentication events from Keycloak,  
+    **So that** payment accounts can be properly associated with authenticated users.
+
+- [ ] **As a** developer,  
+    **I want to** consume user profile events from the User Service,  
+    **So that** payment accounts can be properly associated with user profiles.
 
 - [ ] **As a** developer,  
     **I want to** consume pet events from the Pet Service,  
@@ -409,8 +439,12 @@
    **So that** they are alerted about important system events.
 
 - [ ] **As a** developer,  
-   **I want to** consume user events from the Authentication Service,  
-   **So that** the Backoffice Service has up-to-date user information.
+   **I want to** consume user authentication events from Keycloak,  
+   **So that** the Backoffice Service has up-to-date authentication information.
+
+- [ ] **As a** developer,  
+   **I want to** consume user profile events from the User Service,  
+   **So that** the Backoffice Service has up-to-date user profile information.
 
 - [ ] **As a** developer,  
    **I want to** consume pet events from the Pet Service,  
@@ -585,8 +619,12 @@
    **So that** users can navigate between different sections of the application.
 
 - [ ] **As a** developer,  
-   **I want to** implement authentication flows in the frontend,  
+   **I want to** implement Keycloak integration for authentication in the frontend,  
    **So that** users can register, log in, and maintain their session.
+
+- [ ] **As a** developer,  
+   **I want to** implement User Service integration for user profile management in the frontend,  
+   **So that** users can manage their profiles and preferences.
 
 - [ ] **As a** developer,  
    **I want to** create the pet management interface,  
@@ -657,8 +695,12 @@
    **So that** I can verify that routing, filtering, and load balancing work correctly.
 
 - [ ] **As a** developer,  
-   **I want to** implement integration tests for the Authentication Service,  
+   **I want to** implement integration tests for Keycloak authentication,  
    **So that** I can verify that authentication and authorization work correctly across the system.
+
+- [ ] **As a** developer,  
+   **I want to** implement integration tests for the User Service,  
+   **So that** I can verify that user profile management works correctly across the system.
 
 - [ ] **As a** developer,  
    **I want to** implement integration tests for the Payment Service,  

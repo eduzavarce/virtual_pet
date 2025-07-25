@@ -10,7 +10,8 @@ This use case covers the implementation of the Backoffice Service, which provide
 ## Preconditions
 - Core infrastructure services (API Gateway, Discovery, Config) are operational
 - Event-driven communication infrastructure is set up
-- Authentication Service is operational
+- Keycloak integration is operational
+- User Service is operational
 - Pet Service is operational
 - Payment Service is operational
 - Development environment is set up
@@ -22,7 +23,7 @@ This use case covers the implementation of the Backoffice Service, which provide
 4. Developer implements audit logging for administrative actions to ensure accountability
 5. Developer implements role-based access control for administrative functions
 6. Developer implements a notification system for administrators
-7. Developer configures event consumption from Authentication, Pet, and Payment Services
+7. Developer configures event consumption from Keycloak, User Service, Pet Service, and Payment Service
 8. Developer configures event publishing for system configuration changes
 9. Administrator views comprehensive user information for support purposes
 10. Administrator manages user accounts (enable/disable/update) to enforce platform policies
@@ -54,7 +55,8 @@ This use case covers the implementation of the Backoffice Service, which provide
 - US4: Implement audit logging for administrative actions
 - US5: Implement role-based access control for administrative functions
 - US6: Implement a notification system for administrators
-- US7: Consume user events from the Authentication Service
+- US7: Consume user authentication events from Keycloak
+- US7a: Consume user profile events from the User Service
 - US8: Consume pet events from the Pet Service
 - US9: Consume payment events from the Payment Service
 - US10: Publish system configuration change events to the event system

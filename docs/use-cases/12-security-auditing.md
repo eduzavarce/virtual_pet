@@ -19,22 +19,23 @@ This use case covers the implementation of comprehensive security auditing for t
 2. Security Engineer implements automated security scanning in the CI/CD pipeline
 3. Security Engineer conducts penetration testing on the system
 4. Developer implements secure coding practices and reviews
-5. Developer implements comprehensive authentication and authorization testing
-6. Developer implements data encryption auditing
-7. Developer implements API security testing
-8. Developer implements security logging and monitoring
-9. Administrator accesses security audit reports
-10. Administrator implements security incident response procedures
-11. Security Engineer performs regular security reviews and updates
-12. Developer addresses identified security vulnerabilities
-13. Developer implements security patches and updates
-14. Security Engineer verifies remediation of security issues
-15. Administrator conducts security awareness training for the team
-16. Security Engineer performs compliance checks against security standards
-17. Developer implements security controls based on threat modeling
-18. Security Engineer conducts code security reviews
-19. Developer implements secure configuration management
-20. Administrator establishes and enforces security policies
+5. Developer implements comprehensive Keycloak authentication and authorization testing
+6. Developer implements User Service security testing
+7. Developer implements data encryption auditing
+8. Developer implements API security testing
+9. Developer implements security logging and monitoring
+10. Administrator accesses security audit reports
+11. Administrator implements security incident response procedures
+12. Security Engineer performs regular security reviews and updates
+13. Developer addresses identified security vulnerabilities
+14. Developer implements security patches and updates
+15. Security Engineer verifies remediation of security issues
+16. Administrator conducts security awareness training for the team
+17. Security Engineer performs compliance checks against security standards
+18. Developer implements security controls based on threat modeling
+19. Security Engineer conducts code security reviews
+20. Developer implements secure configuration management
+21. Administrator establishes and enforces security policies
 
 ## Alternative Flows
 - If critical vulnerabilities are discovered, emergency patching procedures should be initiated
@@ -47,7 +48,8 @@ This use case covers the implementation of comprehensive security auditing for t
 - Automated security scanning is integrated into the CI/CD pipeline
 - Penetration testing is conducted regularly
 - Secure coding practices are followed throughout the codebase
-- Authentication and authorization mechanisms are thoroughly tested
+- Keycloak authentication and authorization mechanisms are thoroughly tested
+- User Service security is thoroughly tested
 - Data encryption is properly implemented and audited
 - API endpoints are protected against common attacks
 - Security logging and monitoring is in place
@@ -59,7 +61,8 @@ This use case covers the implementation of comprehensive security auditing for t
 - US2: Implement automated security scanning in the CI/CD pipeline
 - US3: Conduct penetration testing on the system
 - US4: Implement secure coding practices and reviews
-- US5: Implement comprehensive authentication and authorization testing
+- US5: Implement comprehensive Keycloak authentication and authorization testing
+- US5a: Implement User Service security testing
 - US6: Implement data encryption auditing
 - US7: Implement API security testing
 - US8: Implement security logging and monitoring

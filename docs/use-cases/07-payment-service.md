@@ -11,7 +11,8 @@ This use case covers the implementation of the Payment Service with Stripe integ
 ## Preconditions
 - Core infrastructure services (API Gateway, Discovery, Config) are operational
 - Event-driven communication infrastructure is set up
-- Authentication Service is operational
+- Keycloak integration is operational
+- User Service is operational
 - Pet Service is operational
 - Stripe API credentials are available
 - Development environment is set up
@@ -24,7 +25,7 @@ This use case covers the implementation of the Payment Service with Stripe integ
 5. Developer implements a payment history and receipt system for transaction tracking
 6. Developer implements a secure refund process for administrators
 7. Developer configures event publishing for payment success, failure, and subscription changes
-8. Developer implements event consumption from the Authentication and Pet Services
+8. Developer implements event consumption from Keycloak, User Service, and Pet Service
 9. User purchases premium features for virtual pets through secure payment processing
 10. User subscribes to a premium plan with recurring payments
 11. User views payment history and transaction details
@@ -58,7 +59,8 @@ This use case covers the implementation of the Payment Service with Stripe integ
 - US7: Publish payment success events to the event system
 - US8: Publish payment failure events to the event system
 - US9: Publish subscription status change events to the event system
-- US10: Consume user events from the Authentication Service
+- US10: Consume user authentication events from Keycloak
+- US10a: Consume user profile events from the User Service
 - US11: Consume pet events from the Pet Service
 - US12: Purchase premium features for virtual pets
 - US13: Subscribe to a premium plan

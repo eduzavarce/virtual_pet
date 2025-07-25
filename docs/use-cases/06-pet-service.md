@@ -11,7 +11,8 @@ This use case covers the implementation of the Pet Service, which is the core se
 ## Preconditions
 - Core infrastructure services (API Gateway, Discovery, Config) are operational
 - Event-driven communication infrastructure is set up
-- Authentication Service is operational
+- Keycloak integration is operational
+- User Service is operational
 - Development environment is set up
 
 ## Main Flow
@@ -23,7 +24,7 @@ This use case covers the implementation of the Pet Service, which is the core se
 6. Developer implements pet lifecycle events (birth, growth stages, etc.)
 7. Developer implements a notification system for pet status changes
 8. Developer configures event publishing for pet creation, status changes, interactions, and lifecycle events
-9. Developer implements event consumption from the Authentication Service for user account changes
+9. Developer implements event consumption from Keycloak and the User Service for user account and profile changes
 10. User creates a new virtual pet with desired type and initial attributes
 11. User customizes pet's appearance and attributes according to preferences
 12. User interacts with pet through various activities to maintain its status
@@ -58,7 +59,8 @@ This use case covers the implementation of the Pet Service, which is the core se
 - US9: Publish pet status change events to Kafka
 - US10: Publish pet interaction events to Kafka
 - US11: Publish pet lifecycle events to Kafka
-- US12: Consume user events from the Authentication Service
+- US12: Consume user authentication events from Keycloak
+- US12a: Consume user profile events from the User Service
 - US13: Create a new virtual pet
 - US14: Customize pet's appearance and attributes
 - US15: Interact with pet through various activities

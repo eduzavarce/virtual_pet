@@ -1,7 +1,7 @@
-# Use Case 05: Authentication Service
+# Use Case 05: Keycloak Integration and User Service
 
 ## Description
-This use case covers the implementation of the Authentication Service, which handles user registration, authentication, authorization, and account management. The service will provide secure access control for the Virtual Pet application.
+This use case covers the integration of Keycloak as the external identity and access management solution for the Virtual Pet application, as well as the implementation of a separate User Service. Keycloak will handle authentication, authorization, and identity management, while the User Service will manage user-related business logic not directly related to authentication.
 
 ## Actors
 - Developer
@@ -14,47 +14,80 @@ This use case covers the implementation of the Authentication Service, which han
 - Development environment is set up
 
 ## Main Flow
-1. Developer implements a secure user registration system with proper validation and password encryption
-2. Developer implements JWT-based authentication for secure user login and session management
-3. Developer implements token refresh mechanisms for maintaining user sessions
-4. Developer integrates OAuth2 authentication with popular social platforms (Google, Facebook)
-5. Developer implements role-based access control (RBAC) for different user types
-6. Developer implements secure password reset functionality for account recovery
-7. Developer configures event publishing for user registration, authentication, and role changes
-8. Developer implements event consumption for relevant system-wide changes
-9. User registers for a new account with username, password, and required information
-10. User logs in using username and password to receive JWT token
-11. User logs in using social media accounts through OAuth2 integration
-12. User resets password through secure password recovery process
-13. Administrator manages user accounts and permissions through administrative interface
+### Keycloak Integration
+1. Developer sets up and configures Keycloak server for the Virtual Pet application
+2. Developer configures Keycloak realms, clients, and security settings
+3. Developer configures user registration and login flows in Keycloak
+4. Developer configures OAuth2/OpenID Connect for social login integration (Google, Facebook)
+5. Developer sets up role-based access control (RBAC) in Keycloak
+6. Developer configures password policies and recovery mechanisms in Keycloak
+7. Developer integrates the API Gateway with Keycloak for token validation and authorization
+8. Developer configures event listeners in Keycloak to publish authentication events
+9. User registers for a new account through Keycloak's registration page
+10. User logs in using username and password through Keycloak
+11. User logs in using social media accounts through Keycloak's OAuth2 integration
+12. User resets password through Keycloak's password recovery process
+13. Administrator manages user accounts and permissions through Keycloak's admin console
+
+### User Service Implementation
+14. Developer implements the User Service for managing user profiles and preferences
+15. Developer implements user profile management functionality
+16. Developer implements user preferences and settings management
+17. Developer configures event consumption from Keycloak for user-related events
+18. Developer configures event publishing for user profile and preference changes
+19. User manages their profile information through the User Service
+20. User configures their preferences and settings through the User Service
 
 ## Alternative Flows
-- If registration validation fails, appropriate error messages should be displayed
-- If authentication fails, appropriate error messages should be displayed
-- If password reset is requested, a secure link should be sent to the user's email
-- If token refresh fails, the user should be redirected to login
+### Keycloak Integration
+- If Keycloak registration validation fails, appropriate error messages should be displayed
+- If Keycloak authentication fails, appropriate error messages should be displayed
+- If password reset is requested, Keycloak will send a secure link to the user's email
+- If token refresh fails, the user should be redirected to Keycloak login
+
+### User Service
+- If user profile update fails, appropriate error messages should be displayed
+- If user preferences cannot be saved, the system should retry or notify the user
+- If event consumption from Keycloak fails, the User Service should implement retry mechanisms
 
 ## Postconditions
-- Users can securely register for new accounts
-- Users can authenticate using username/password or social login
-- Users can maintain their session through token refresh
-- Users can recover their accounts through password reset
-- Administrators can manage user accounts and permissions
-- Authentication events are published for other services to consume
+### Keycloak Integration
+- Keycloak is properly configured and integrated with the Virtual Pet application
+- Users can securely register for new accounts through Keycloak
+- Users can authenticate using username/password or social login through Keycloak
+- Users can maintain their session through Keycloak token refresh
+- Users can recover their accounts through Keycloak's password reset functionality
+- Administrators can manage user accounts and permissions through Keycloak's admin console
+- Authentication events from Keycloak are published for other services to consume
+
+### User Service
+- User Service is properly implemented and integrated with Keycloak
+- Users can manage their profiles through the User Service
+- Users can configure their preferences and settings through the User Service
+- User profile and preference changes are published as events for other services to consume
+- User Service consumes relevant events from Keycloak and other services
 
 ## Related User Stories
-- US1: Implement a secure user registration system
-- US2: Implement JWT-based authentication
-- US3: Implement token refresh mechanisms
-- US4: Integrate OAuth2 authentication with popular social platforms
-- US5: Implement role-based access control (RBAC)
-- US6: Implement secure password reset functionality
-- US7: Publish user registration events to Kafka
-- US8: Publish user authentication events to Kafka
-- US9: Publish role change events to Kafka
-- US10: Consume relevant events from other services
-- US11: Register for a new account
-- US12: Log in using username and password
-- US13: Log in using social media accounts
-- US14: Reset password if forgotten
-- US15: Manage user accounts and permissions
+### Keycloak Integration
+- US1: Set up and configure Keycloak for the Virtual Pet application
+- US2: Configure Keycloak realms, clients, and security settings
+- US3: Configure user registration and login flows in Keycloak
+- US4: Configure OAuth2/OpenID Connect for social login integration
+- US5: Set up role-based access control in Keycloak
+- US6: Configure password policies and recovery mechanisms in Keycloak
+- US7: Integrate the API Gateway with Keycloak
+- US8: Configure event listeners in Keycloak
+- US9: Register for a new account through Keycloak
+- US10: Log in using username and password through Keycloak
+- US11: Log in using social media accounts through Keycloak
+- US12: Reset password through Keycloak
+- US13: Manage user accounts and permissions through Keycloak's admin console
+
+### User Service
+- US14: Implement the User Service for managing user profiles and preferences
+- US15: Implement user profile management functionality
+- US16: Implement user preferences and settings management
+- US17: Configure event consumption from Keycloak
+- US18: Configure event publishing for user profile and preference changes
+- US19: Manage profile information through the User Service
+- US20: Configure preferences and settings through the User Service

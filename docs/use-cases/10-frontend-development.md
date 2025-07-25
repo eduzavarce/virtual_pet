@@ -20,22 +20,24 @@ This use case covers the development of the frontend application using ReactJS. 
 4. Developer implements responsive design principles for multi-device support
 5. Developer integrates the frontend with the API Gateway for backend communication
 6. Developer implements client-side routing for navigation between application sections
-7. Developer implements authentication flows for user registration and login
-8. Developer creates the pet management interface for pet creation and interaction
-9. Developer implements the payment and subscription UI for premium features
-10. Developer creates an admin dashboard interface for system management
-11. Developer implements error handling and user feedback mechanisms
-12. Developer implements frontend logging and error tracking
-13. Developer optimizes the frontend for performance and responsiveness
-14. Developer implements comprehensive frontend testing
-15. User accesses the application on different devices with consistent experience
-16. User navigates through a visually appealing and intuitive interface
-17. User receives visual feedback for actions performed in the application
-18. Administrator accesses the comprehensive admin interface for system management
+7. Developer implements Keycloak integration for authentication and user registration
+8. Developer implements User Service integration for user profile management
+9. Developer creates the pet management interface for pet creation and interaction
+10. Developer implements the payment and subscription UI for premium features
+11. Developer creates an admin dashboard interface for system management
+12. Developer implements error handling and user feedback mechanisms
+13. Developer implements frontend logging and error tracking
+14. Developer optimizes the frontend for performance and responsiveness
+15. Developer implements comprehensive frontend testing
+16. User accesses the application on different devices with consistent experience
+17. User navigates through a visually appealing and intuitive interface
+18. User receives visual feedback for actions performed in the application
+19. Administrator accesses the comprehensive admin interface for system management
 
 ## Alternative Flows
 - If the API Gateway is unavailable, the frontend should display appropriate error messages
-- If authentication fails, clear error messages should guide the user
+- If Keycloak authentication fails, clear error messages should guide the user
+- If User Service operations fail, appropriate error messages should be displayed
 - If a feature is not available due to subscription status, appropriate messaging should be shown
 - If client-side validation fails, immediate feedback should be provided to the user
 
@@ -53,7 +55,8 @@ This use case covers the development of the frontend application using ReactJS. 
 - US4: Implement responsive design principles
 - US5: Integrate the frontend with the API Gateway
 - US6: Implement client-side routing
-- US7: Implement authentication flows in the frontend
+- US7: Implement Keycloak integration for authentication in the frontend
+- US7a: Implement User Service integration for user profile management in the frontend
 - US8: Create the pet management interface
 - US9: Implement the payment and subscription UI
 - US10: Create an admin dashboard interface
