@@ -1,1 +1,15 @@
 rootProject.name = 'virtual_pet'
+//sevices
+include ':configuration'
+project(':configuration').projectDir = new File('services/configuration')
+
+include ':discovery'
+project(':discovery').projectDir = new File('services/discovery')
+
+include ':gateway'
+project(':gateway').projectDir = new File('services/gateway')
+
+
+//contexts
+include ':shared'
+project(':shared').projectDir = new File('src/shared')
