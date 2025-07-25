@@ -1,23 +1,10 @@
 eureka:
-  instance:
-    hostname: ${DISCOVERY_SERVER_HOSTNAME:localhost}
   client:
     register-with-eureka: false
     fetch-registry: false
-    service-url:
-      defaultZone: ${DISCOVERY_SERVER_DOMAIN:http://localhost}:${server.port:8087}/eureka/
   server:
     enable-self-preservation: ${EUREKA_SELF_PRESERVATION:false}
     eviction-interval-timer-in-ms: 5000
 
 server:
   port: ${DISCOVERY_SERVER_PORT}
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
-  endpoint:
-    health:
-      show-details: always
