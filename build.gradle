@@ -19,68 +19,21 @@ repositories {
 }
 
 ext {
-    set('springCloudVersion', "2025.0.0")
-    set('springBootVersion', "3.5.3")
-    set('dotenvVersion', "4.0.0")
+    set('springCloudVersion', "2023.0.0")
+    set('springCloudDependenciesVersion', "3.5.3")
 }
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+        mavenBom "org.springframework.boot:spring-boot-dependencies:${springCloudDependenciesVersion}"
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
-    dependencies {
-        // Common dependencies with versions
-        dependency "me.paulschwarz:spring-dotenv:${dotenvVersion}"
-    }
-}
-
-// Common dependencies for all subprojects
-allprojects {
-    apply plugin: 'java'
-    
-    repositories {
-        mavenCentral()
-    }
-}
-
-// Common dependencies and configurations for all services
-subprojects {
-    // Apply common plugins
-    apply plugin: 'org.springframework.boot'
-    apply plugin: 'io.spring.dependency-management'
-    
-    group = 'dev.eduzavarce'
-    version = '0.0.1-SNAPSHOT'
-    
-    java {
-        toolchain {
-            languageVersion = JavaLanguageVersion.of(21)
-        }
-    }
-    
-    dependencyManagement {
-        imports {
-            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${rootProject.ext.springCloudVersion}"
-        }
-    }
-    
-    dependencies {
-        // Common dependencies for all services
-        implementation 'org.springframework.boot:spring-boot-starter-actuator'
-        implementation "me.paulschwarz:spring-dotenv:${rootProject.ext.dotenvVersion}"
-        developmentOnly 'org.springframework.boot:spring-boot-devtools'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
-        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    }
-    
-    tasks.named('test') {
-        useJUnitPlatform()
     }
 }
 
 dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+//    implementation 'me.paulschwarz:spring-dotenv:4.0.0'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
     testImplementation 'org.mockito:mockito-core:5.4.0'
@@ -90,12 +43,10 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-// Disable bootJar task for the root project since it doesn't have a main class
 bootJar {
     enabled = false
 }
 
-// Enable jar task for the root project
 jar {
     enabled = true
 }
