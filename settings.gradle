@@ -16,3 +16,6 @@ project(':users').projectDir = new File('services/users')
 //contexts
 include ':shared'
 project(':shared').projectDir = new File('src/shared')
+
+include ':users_domain'
+project(':users_domain').projectDir = new File('src/users')
